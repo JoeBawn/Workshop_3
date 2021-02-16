@@ -34,8 +34,23 @@ class Pawn(Piece):
     A class representing a chess pawn.
     """
 
+    # to get the player: self.player
+    # self.player == Player.WHITE
+    # self.player == Player.BLACK
+
+
     def get_available_moves(self, board):
-        return []
+        current_square = board.find_piece(self) 
+        if self.player == Player.WHITE: 
+           square_in_front = Square.at(current_square.row +1, current_square.col)
+  
+        if self.player == Player.BLACK: 
+           square_in_front = Square.at(current_square.row -1, current_square.col)# current_square.row
+        # current_square.col
+        # Square.at(4, 6)
+        # Square.at(current_square.row + 1, 6)
+
+        return [square_in_front]
 
 
 class Knight(Piece):
